@@ -10,7 +10,7 @@ port = '3000'
 app.set 'views', __dirname + '/views'
 
 app.configure 'development', -> app.use assets()
-app.configure 'production',  -> ip = 'vps.kaslersteinhauser.com'; port = 8501; app.use assets( build: true, buildDir: false, src: __dirname + '/assets', detectChanges: false )
+app.configure 'production',  -> ip = 'vps.kastlersteinhauser.com'; port = 8501; app.use assets( build: true, buildDir: false, src: __dirname + '/assets', detectChanges: false )
 
 app.use express.static(__dirname + '/assets')
 
