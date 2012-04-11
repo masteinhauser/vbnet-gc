@@ -1,7 +1,7 @@
 !=css('slides')
 !=js('Slides')
 
-#Connect Connecting to Server...
+#connect Connecting to Server...
 
 #slides
   .slide
@@ -24,68 +24,6 @@
     .speaker
       ul
         li Hi and welcome
-        li About me
-        li Plug for ADC
-
-  .slide
-    h1 Zabbix & Dev Ops in a nutshell
-    p Monitoring: Systems & Networks
-    ul
-      li What's your network doing right now?
-      li What's the average process load of your database servers at peak?
-      li Do all of your systems have sufficient free space?
-      li How many requests per second are you seeing(near real-time)
-      li How many tuples per second does your DB process?
-
-    .speaker
-      ul
-        li Who's heard of Zabbix or uses monitoring?
-        li Who's used it or other monitoring for anything?
-
-  .slide
-    h1 Server monitoring
-    p A brief choice of options...
-    
-    p Roll-Your-Own
-    ul
-      li Scheduled Emails
-      li Scripts
-
-    p Integrated
-    ul 
-      li Splunk
-      li Nagios
-      li Cacti
-      li Zabbix
-      li Many others...
-
-    .speaker
-      ul
-        li Simple Scripts / Emails
-        li Updates / Graphs
-        li Info in flat-files or DB
-        li Alerting
-
-  .slide
-    h1 Zabbix Architecture
-
-    p Zabbix environment consists of:
-    ul
-      li Zabbix Servers
-      li Database to store info (MySQL, PostgreSQL, Oracle, DB2)
-      li Frontend (php)
-      li Proxies (large/distributed environments)
-      li Agents
-      li External Scripts
-
-    .speaker
-      ul
-       li server
-       li DB agnostic
-       li PHP frontend
-       li proxies, why?
-       li agents, getting data
-       li scripts and zabbix_sender
 
   .slide
     h1 Zabbix Architecture
@@ -382,7 +320,7 @@
     p Thanks for coming!
 
 img.logo(src='/img/adc.png')
-//#keyboard-enable
+#keyboard-enable
 
 #footer
   a(href="http://github.com/masteinhauser/zabbix-slides", target='_blank')
