@@ -2,7 +2,8 @@ express    = require("express")
 global.app = express.createServer()
 io         = require('socket.io').listen(app)
 assets     = require('connect-assets')
-ip = '192.168.168.110'
+
+ip = '192.168.1.110'
 port = '3000'
 
 app.set 'views', __dirname + '/views'
