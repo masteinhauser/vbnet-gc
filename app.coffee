@@ -2,12 +2,8 @@ express    = require("express")
 global.app = express.createServer()
 io         = require('socket.io').listen(app)
 assets     = require('connect-assets')
-ip = '192.168.236.109'
+ip = '192.168.168.110'
 port = '3000'
-
-
-
-port       = 3000
 
 app.set 'views', __dirname + '/views'
 
@@ -16,7 +12,7 @@ app.configure 'production',  -> port = 8501; app.use assets( build: true, buildD
 
 app.use express.static(__dirname + '/assets')
 
-app.get '/', (req,res) -> res.render 'slides.jade'
+app.get '/', (req,res) -> res.render('slides.jade', {ip: ip, port: port})
 app.get '/clicker', (req,res) -> res.render 'clicker.jade'
 
 slides_io = io.of("/slides")
