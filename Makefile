@@ -32,7 +32,7 @@ touch:
 	@rm -rf vps.kastlersteinhauser.com*
 
 watch:
-	@if ! which supervisor > /dev/null; then echo "supervisor required, installing..."; sudo npm install -g supervisor; fi
+	@if ! which supervisor > /dev/null; then echo "supervisor required, installing..."; npm install supervisor; fi
 	@supervisor -w assets,views,app.coffee app.coffee
 
 clean:

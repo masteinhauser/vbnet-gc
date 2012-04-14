@@ -5,7 +5,7 @@
 
 #slides
    .slide
-      h1 VB.NET Learn & Share:<br/>CLR Garbage Collection
+      h1 VB.NET Learn & Share:<br/>.NET Framework & CLR
       .center
          img(src='/img/ms-net.png', width='25%'. height='25%')
          p
@@ -21,6 +21,7 @@
             b http://#{ip}:#{app.address().port}/ 
             | in your browser
 
+         p NOTE: You may not be the only one viewing these slides...
       .speaker
          ul
             li Hi and Welcome!
@@ -29,6 +30,11 @@
       h1 .NET Architecture
       .center
          img.framed(src="/img/DotNetArchitecture.jpg")
+      br
+      ul
+         li .NET is a library of Microsoft written code so you have to write less "Boilerplate" code.
+         li It is like an Intermediate Language that many others compile to like VB.NET, ASP, C#, and J#.
+         li The .NET framework is similar to all of the Java libraries but designed for multiple languages.
 
       .speaker
          ul
@@ -41,6 +47,11 @@
       h1 CLR Architecture
       .center
          img.framed(src="/img/cli.png", width="468", height="540")
+      br
+      ul
+         li The CLR is like the Java Virtual Machine(JVM)
+         li It is like a "Virtual Computer" that allows code to run across many computers.
+         li The CLR is the most important piece to the .NET framework.
 
       .speaker
          ul
@@ -49,14 +60,119 @@
             li CLR(Garbage Collectors)
 
    .slide
-      h1
-         p A bit like LEGO
-      ul
-         li Zabbix has Templates
+      h1 More Detail of the CLR Process
+      .center
+         img.framed(src="/img/cli.png", width="468", height="540")
+      ol
+         li VB.NET code is written by you
+         li The .NET framework (Common Language Infrastructure), which you use in your code, is included in your code
+         li The code is compiled down to Common Intermediate Language which is what is actually used between computers.
+         li Once on the computer, the CLR(Common Language Runtime) compiles that code to binary which is executed by the processor
 
       .speaker
          ul
-            li Template --> Object
+            li 
+
+   .slide
+      h2 The Good
+      ul
+         li Write once, run most places
+         li Language and Platform gets updated, your code gets "updated"
+         li Program in the language you like (VB.NET, C#, etc.)
+         li Fantastic documentation
+         li Many developers know or can easily learn Microsoft backed languages
+
+      h2 The Bad
+      ul
+         li Dependent on Microsoft maintaining support for your language/technology(<a href="http://www.infoq.com/news/2011/09/Metro-Plug-ins" target="_blank">Silverlight</a>)
+         li Performance may be less due to "generic" code versus "hand optimized"
+         li Low programming requirements enable easy development, but can hinder creating maintainable code
+
+      small * Many of these issues are relevant in other languages and technology stacks as well.
+
+      .speaker
+         ul
+            li 
+
+   .slide
+      h1 What does .NET compiled code look like?
+      pre
+       | .assembly Hello {}
+       | .assembly extern mscorlib {}
+       | .method static void Main()
+       | {
+       |    .entrypoint
+       |    .maxstack 1
+       |    ldstr "Hello, world!"
+       |    call void [mscorlib]System.Console::WriteLine(string)
+       |    call string[mscorlib]System.Console::ReadLine()
+       |    pop
+       |    ret
+       | }
+
+   .slide
+      h1 What does Java compiled code look like?
+      pre
+       |  Compiled from Employee.java
+       |  class Employee extends java.lang.Object {
+       |  public Employee(java.lang.String,int);
+       |  public java.lang.String employeeName();
+       |  public int employeeNumber();
+       |  }
+       br
+       |  Method Employee(java.lang.String,int)
+       |  0 aload_0
+       |  1 invokespecial #3 <Method java.lang.Object()>
+       |  4 aload_0
+       |  5 aload_1
+       |  6 putfield #5 <Field java.lang.String name>
+       |  9 aload_0
+       |  10 iload_2
+       |  11 putfield #4 <Field int idNumber>
+       |  14 aload_0
+       |  15 aload_1
+       |  16 iload_2
+       |  17 invokespecial #6 <Method void storeData(java.lang.String, int)>
+       |  20 return
+       br
+       |  Method java.lang.String employeeName()
+       |  0 aload_0
+       |  1 getfield #5 <Field java.lang.String name>
+       |  4 areturn
+       br
+       |  Method int employeeNumber()
+       |  0 aload_0
+       |  1 getfield #4 <Field int idNumber>
+       |  4 ireturn
+       br
+       |  Method void storeData(java.lang.String, int)
+       |  0 return
+       |  }
+
+   .slide
+      h1 What's the difference?
+
+      p <strong>.NET code is made to be "human readable"</strong>
+       | <br>This means that you and I should be able to read and modify it if needed
+       | <br><a href="http://en.wikipedia.org/wiki/Common_Intermediate_Language">Common Intermediate Language</a>
+      p  <strong>Java was directly written for machines only</strong>
+       | <br>It uses this as an advantage for higher performance
+       | <br>But, you and I would never want to work with this.
+       | <br><a href="http://en.wikipedia.org/wiki/Java_bytecode">Java Bytecode</a>
+
+   .slide
+      h1 Directly Compiled Code
+      p .NET code can be directly compiled to native code but does NOT remove the requirement of the .NET Framework being installed.
+       | <br> It would normally be used to possibly increase startup time but often is slower than normal code due to runtime optimizations the CLR makes depending on the system which is running the program.
+      p Details on this process can be found:
+      ol
+        li <a href="http://msdn.microsoft.com/en-us/library/ht8ecch6(VS.71).aspx">Compiling MSIL to Native Code</a>
+        li <a href="http://msdn.microsoft.com/en-us/library/6t9t5wcf.aspx">Ngen</a>
+
+      .speaker
+         ul
+            li 
+
 
    .slide
       h1 Questions + Discussion
